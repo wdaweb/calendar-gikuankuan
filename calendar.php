@@ -30,15 +30,17 @@
             background:#A13D63;
             border:black solid 2px;
             opacity:0.9; 
+            /* border-radius: 5%; */
             /* 透明度 */
             
         }
-        
+
         table td{
             border:1px solid #CCC;
-            padding:15px;
+            padding:25px;
             text-align:center;
-            border:black solid 1px;
+            border:black solid 0.5px;
+            /* border-radius: 20%; */
         }
         /* table td:nth-child(1) */
         table tr:nth-child(2){
@@ -59,20 +61,27 @@
      } else {
         $m = date("m");
      }
-
+    // 第一步驟作為判斷變數裡面是否為空值，如果是就用現在本機時間，
+    // 如果非空值代表我有輸入變數控制，就以控制為主
     // 在一開始先宣告 年 跟 月的變數方便後面使用
-    // $m=$_POST[date('m')];
+
+    //  顯示用的跳躍月份
+     $nextmouth = $_GET['mouth']+1;
+     $upmouth= $_GET['mouth']-1
+    
    
     ?>
-<h4 align = "center">行事曆</h4>
+<h1 align = "center">行事曆</h1>
 <div align = "center">年份:<?php echo $year?></div>
 <div align = "center">
-    <h4>
-        <a href="#">上一月  <?php echo date('m')-1?></a>
-        <a href="">這個月  <?php echo date('m') ?></a>
-        <a href="#">下一月  <?php echo date('m')+1?> </a>
+    <h3>
+        <a href="calendar.php?year=<?=$year?>&mouth=<?=$upmouth?>">上一月：<?php echo $upmouth?></a>
+             
+        <a href="">這個月：<?php echo $m ?></a>
+       
+        <a href="calendar.php?year=<?=$year?>&mouth=<?=$nextmouth?>">下一月：<?php echo $nextmouth?></a>
         <!-- 之後這邊再增加post去對變數做變化 -->
-    </h4>
+    </h3>
     <div><form action="calendar.php" method="get">
         輸入年份: <input type="text" name="year" />
         輸入月份: <input type="text" name="mouth" />
@@ -83,7 +92,7 @@
 
     <?php
   
-    if($m == true){
+    if($m == true || 0){
     ?>
     <!-- 目前想法是給年月各一個新的變數，用if去做月份的控制 -->
 
