@@ -49,10 +49,17 @@
 
 <body>
     <?php
-      $year=date('y');
-      $m=date('m');
-    @$year=$_GET["year"];
-    // @$m=$_GET["moon"];
+    if (!empty($_GET['year'])) {
+        $year = $_GET['year'];
+     } else {
+        $year = date("Y");
+     }
+     if (!empty($_GET['mouth'])) {
+        $m = $_GET['mouth'];
+     } else {
+        $m = date("m");
+     }
+
     // 在一開始先宣告 年 跟 月的變數方便後面使用
     // $m=$_POST[date('m')];
    
@@ -68,7 +75,7 @@
     </h4>
     <div><form action="calendar.php" method="get">
         輸入年份: <input type="text" name="year" />
-        輸入月份: <input type="text" name="moon" />
+        輸入月份: <input type="text" name="mouth" />
 　<input type="submit" value="送出表單"/>
 </form></div>
 </div>
