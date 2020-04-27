@@ -67,9 +67,23 @@
 
     //  顯示用的跳躍月份
      $nextmouth = $_GET['mouth']+1;
-     $upmouth= $_GET['mouth']-1
+     $upmouth= $_GET['mouth']-1;
     
-   
+    if($nextmouth>12){
+        // $year++;
+        $nextmouth = 1;
+    }else{
+        $nextmouth;
+    }
+
+    if($upmouth<1){
+        // $year--;
+        $upmouth = 12;
+    }else{
+        $upmouth;
+    }
+
+
     ?>
 <h1 align = "center">行事曆</h1>
 <div align = "center">年份:<?php echo $year?></div>
