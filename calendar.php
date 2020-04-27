@@ -49,25 +49,33 @@
 
 <body>
     <?php
-    $year=date('Y'); 
+      $year=date('y');
+      $m=date('m');
+    @$year=$_GET["year"];
+    // @$m=$_GET["moon"];
     // 在一開始先宣告 年 跟 月的變數方便後面使用
-    $m=date('m');
+    // $m=$_POST[date('m')];
+   
     ?>
 <h4 align = "center">行事曆</h4>
 <div align = "center">年份:<?php echo $year?></div>
 <div align = "center">
     <h4>
-        <a href="#">上一月<?php echo (date('m')-1)?></a>
-        <a href="#">這個月<?php echo date('m') ?></a>
-        <a href="#">下一月<?php echo (date('m')+1) ?> </a>
-        <!-- 之後這邊再增加get去對變數做變化 -->
+        <a href="#">上一月  <?php echo date('m')-1?></a>
+        <a href="">這個月  <?php echo date('m') ?></a>
+        <a href="#">下一月  <?php echo date('m')+1?> </a>
+        <!-- 之後這邊再增加post去對變數做變化 -->
     </h4>
+    <div><form action="calendar.php" method="get">
+        輸入年份: <input type="text" name="year" />
+        輸入月份: <input type="text" name="moon" />
+　<input type="submit" value="送出表單"/>
+</form></div>
 </div>
 <div class="cla">
 
     <?php
-    $year=date('y');
-    $m=date('m');
+  
     if($m == true){
     ?>
     <!-- 目前想法是給年月各一個新的變數，用if去做月份的控制 -->
