@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>J個4日歷辣</title>
+    <title>kuan calendar</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <style>
         *{
@@ -45,7 +45,7 @@
         }
         /* table td:nth-child(1) */
         table tr:nth-child(2){
-            background:#351E29;
+            background:gray;
         } 
         </style>
 </head>
@@ -59,6 +59,7 @@
      }
      if (!empty($_GET['mouth'])) {
         $m = $_GET['mouth'];
+    
      } else {
         $m = date("m");
      }
@@ -67,6 +68,9 @@
     // 在一開始先宣告 年 跟 月的變數方便後面使用
 
     //  顯示用的跳躍月份
+
+
+
      $nextmouth = $_GET['mouth']+1;
      $upmouth= $_GET['mouth']-1;
     
@@ -86,22 +90,26 @@
 
 
     ?>
-<h1 align = "center">行事曆</h1>
-<div align = "center">年份:<?php echo $year?></div>
+<h1 align = "center">Calendar</h1>
+<h2 align = "center">年份:<?php echo $year?></h2>
 <div align = "center">
     <h3>
+        <button class="btn btn-outline-primary">
         <a href="calendar.php?year=<?=$year?>&mouth=<?=$upmouth?>">上一月：<?php echo $upmouth?></a>
-             
+        </button>
+        <button class="btn btn-outline-primary">
         <a href="">這個月：<?php echo $m ?></a>
-       
+        </button>
+        <button class="btn btn-outline-primary">
         <a href="calendar.php?year=<?=$year?>&mouth=<?=$nextmouth?>">下一月：<?php echo $nextmouth?></a>
+        </button>
         <!-- 之後這邊再增加post去對變數做變化 -->
     </h3>
-    <div><form action="calendar.php" method="get">
+    <div><h6><form action="calendar.php" method="get">
         輸入年份: <input type="text" name="year" />
         輸入月份: <input type="text" name="mouth" />
-　<input type="submit" value="送出表單"/>
-</form></div>
+　<input type="submit" value="送出表單" class="btn btn-secondary btn-sm"/>
+</form></h6></div>
 </div>
 <div class="cla">
 
@@ -111,8 +119,8 @@
     ?>
     <!-- 目前想法是給年月各一個新的變數，用if去做月份的控制 -->
 
-        <table>
-        <tr><td colspan="7">月份：<?=$m;?></tr></td>
+        <table class="table-dark table-hover">
+        <tr><td colspan="7" class="thead-light">月份：<?=$m;?></tr></td>
             <tr>
                 <td>日</td>
                 <td>一</td>
@@ -149,9 +157,7 @@
                         }
                     }
                     echo"</tr>";
-                }
-
-                
+                }           
                 
                 ?>
                 </table>
@@ -160,7 +166,6 @@
         }
         ?>
 </div>
-
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
