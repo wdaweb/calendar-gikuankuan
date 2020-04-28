@@ -69,25 +69,40 @@
 
     //  顯示用的跳躍月份
 
+    if (!empty($_GET['mouth'])) {
+        $nextmouth = $_GET['mouth']+1;
+        $upmouth= $_GET['mouth']-1;
+     } else {
+        $nextmouth = date("m")+1;
+        $upmouth= date("m")-1;
+     }
 
-
-     $nextmouth = $_GET['mouth']+1;
-     $upmouth= $_GET['mouth']-1;
     
-    if($nextmouth>12){
-        // $year++;
+    if($m==12){
         $nextmouth = 1;
+        $nextyear =$year +1;
+        // $year++;
     }else{
         $nextmouth;
+        $nextyear = $year;
     }
 
-    if($upmouth<1){
-        // $year--;
+    if($m==1){
         $upmouth = 12;
+        $upyear=$year-1;
+        // $year--;
     }else{
         $upmouth;
+        $upyear = $year;
     }
 
+    // if (!empty($_GET['year'])) {
+    //     $year = $_GET['year'];
+    //  } else {
+    //     $year = date("Y");
+    //  }
+
+    
 
     ?>
 <h1 align = "center">Calendar</h1>
@@ -95,13 +110,13 @@
 <div align = "center">
     <h3>
         <button class="btn btn-outline-primary">
-        <a href="calendar.php?year=<?=$year?>&mouth=<?=$upmouth?>">上一月：<?php echo $upmouth?></a>
+        <a href="calendar.php?year=<?=$upyear?>&mouth=<?=$upmouth?>">上一月：<?php echo $upmouth?></a>
         </button>
         <button class="btn btn-outline-primary">
         <a href="">這個月：<?php echo $m ?></a>
         </button>
         <button class="btn btn-outline-primary">
-        <a href="calendar.php?year=<?=$year?>&mouth=<?=$nextmouth?>">下一月：<?php echo $nextmouth?></a>
+        <a href="calendar.php?year=<?=$nextyear?>&mouth=<?=$nextmouth?>">下一月：<?php echo $nextmouth?></a>
         </button>
         <!-- 之後這邊再增加post去對變數做變化 -->
     </h3>
